@@ -3,7 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>DevPort Pro: Ultimate AI Portfolio Creator</title>
+    <!-- Display Fonts for UI Themes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Client-side error troubleshooting visualizer -->
+    <script>
+      window.addEventListener('error', function(event) {
+        showErrorOverlay('JavaScript Error', event.message, event.filename + ':' + event.lineno + ':' + event.colno);
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = event.reason;
+        var msg = reason ? (reason.message || String(reason)) : 'Unknown async rejection';
+        var loc = (reason && reason.stack) ? reason.stack.split('\n')[1] : '';
+        showErrorOverlay('Unhandled Promise Rejection', msg, loc);
+      });
+
+      function showErrorOverlay(title, message, location) {
+        if (document.getElementById('debug-error-overlay')) return;
+        var div = document.createElement('div');
+        div.id = 'debug-error-overlay';
+        div.style.position = 'fixed';
+        div.style.inset = '0';
+        div.style.backgroundColor = '#111827';
+        div.style.color = '#fda4af';
+        div.style.padding = '32px';
+        div.style.fontFamily = 'monospace';
+        div.style.fontSize = '14px';
+        div.style.lineHeight = '1.6';
+        div.style.zIndex = '999999';
+        div.style.overflow = 'auto';
+
+        var titleEl = document.createElement('h1');
+        titleEl.textContent = '🚨 Application Fault: ' + title;
+        titleEl.style.color = '#ffffff';
+        titleEl.style.borderBottom = '2px solid #f43f5e';
+        titleEl.style.paddingBottom = '12px';
+        titleEl.style.marginTop = '0';
+        div.appendChild(titleEl);
+
+        var msgEl = document.createElement('p');
+        msgEl.style.fontSize = '16px';
+        msgEl.style.fontWeight = 'bold';
+        msgEl.textContent = 'Message: ' + message;
+        div.appendChild(msgEl);
+
+        if (location) {
+          var locEl = document.createElement('p');
+          locEl.style.color = '#94a3b8';
+          locEl.textContent = 'Location: ' + location;
+          div.appendChild(locEl);
+        }
+
+        var hint = document.createElement('div');
+        hint.style.marginTop = '24px';
+        hint.style.borderTop = '1px solid #374151';
+        hint.style.paddingTop = '16px';
+        hint.style.color = '#94a3b8';
+        hint.innerHTML = '<strong>Troubleshooting Hint:</strong> This error was caught during React initialization or module evaluation. Open your browser console (F12 or right-click -> Inspect -> Console) to see the full, detailed error stack trace.';
+        div.appendChild(hint);
+
+        if (document.body) {
+          document.body.appendChild(div);
+        } else {
+          window.addEventListener('DOMContentLoaded', function() {
+            document.body.appendChild(div);
+          });
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

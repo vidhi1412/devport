@@ -1,0 +1,8 @@
+{
+  "name": "DevPort Pro: AI portfolio Website Builder",
+  "description": "An interactive, dynamic portfolio website customizer and physics animation builder for engineers. Features AI theme generator, customized layouts, custom spring configurations, and instant publication presets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
